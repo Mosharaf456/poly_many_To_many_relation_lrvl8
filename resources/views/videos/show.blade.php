@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Single Vedio  List</h1>        
+        <h1>Single Vedio  List:::::::</h1>        
             <h5>{{$video->url}}</h5>
             <p> {{$video->file_path}} </p>
 

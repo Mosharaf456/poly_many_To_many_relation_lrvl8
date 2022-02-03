@@ -27,7 +27,8 @@
                 <td>{{$video->url}}</td>
                 <td>{{$video->file_path}}</td>
                 <td>
-                    <a href="/videos/{{$video->id}}">Show</a>
+                    <a href="/videos/{{$video->id}}">Show</a> |
+                    <a href="/videos/{{$video->id}}/edit">Edit</a>
                 </td>
               </tr>
                  

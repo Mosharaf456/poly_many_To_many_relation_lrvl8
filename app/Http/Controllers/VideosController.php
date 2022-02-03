@@ -79,7 +79,15 @@ class VideosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $video = Video::find($id);
+        $selected_tag = $video->tags->pluck('id');
+        // return $selected_tag;
+        
+        return view('videos.edit' ,[
+            'video' => $video,
+            'tags'=>Tag::all(),
+            'selected_tag' => $selected_tag
+        ]);
     }
 
     /**
@@ -91,7 +99,34 @@ class VideosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // form validation
+        request()->validate([
+            'url' => 'required | min:3'
+        ]);
+        // dd('Testing method find or not!!');
+        //form value
+        $tags = $request->tags;
+        // dd($tags);
+        // current original data from database
+        $video= Video::find($id);
+
+        $video->update(request()->except('_token','tags'));
+
+
+        // find tag in database to confirm tag //validation purpose must use
+
+        $tags_form_database = Tag::find($tags);
+
+        //1st way
+        //// old file detach
+        // $video->tags()->detach($video->tags);
+        // //new edited file attach
+        // $video->tags()->attach($tags_form_database);
+
+        //2nd way optimize
+        $video->tags()->sync($tags_form_database);
+
+        return back();
     }
 
     /**

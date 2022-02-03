@@ -18,4 +18,10 @@ class Tag extends Model
     {
         return $this->morphedByMany('App\Models\Post','taggable');
     }
+// default route primary key change
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+
 }

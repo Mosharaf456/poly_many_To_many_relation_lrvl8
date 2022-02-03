@@ -58,9 +58,22 @@ class TagsController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
+
+    //  a wAy to solve url name except id manuaal process
+
+    // public function show($tagname) //select * from tags where id = '$tagname'
+    // {
+    //     //select * from tags where name = '$tagname'
+    //     $tag =Tag::where('name', $tagname)->first();
+    //     // $tag =Tag::whereName( $tagname)->first();
+
+    //     return view('tags.show',compact('tag'));
+    // }
+
+    public function show(Tag $tag) //select * from tags where name = '$tagname'
     {
-        //
+        // dd(request()->ip());
+        return view('tags.show',compact('tag'));
     }
 
     /**
@@ -69,7 +82,7 @@ class TagsController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit(Tag $tag) //select * from tags where id = '$tagname'
     {
         //
     }
