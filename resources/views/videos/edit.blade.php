@@ -23,7 +23,10 @@
                 <label for="file_path">Videos Path</label>
                 <input id="file_path" type="text" name="file_path" value="{{$video->file_path}}" class="form-control">
             </div>
-            
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input id="date" type="Date" name="created_at" value="{{$video->created_at->format('Y-m-d')}}" class="form-control">
+            </div>
             <div class="form-group">
 
                 <label for="tags">Select Tags</label>
